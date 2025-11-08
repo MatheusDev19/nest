@@ -22,7 +22,7 @@ services:
           cpus: '0.5'
           memory: 256M
   web:
-    image: matheus/web:latest
+    image: pifive:5002/matheusapi:latest
     container_name: web
     networks:
       - proxy_net
