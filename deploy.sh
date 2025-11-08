@@ -12,12 +12,12 @@ set -a
 source "$ENV_PATH"
 set +a
 
-echo "Building Docker image: $IMAGE_NAME"
-if ! docker build -t "$IMAGE_NAME" -f "$DOCKERFILE" .; then
-    echo "Error: Docker build failed."
+
+echo "Pulling latest images..."
+if ! docker compose -f "$COMPOSE_FILE" pull; then
+    echo "Error: Image pull failed."
     exit 1
 fi
-
 
 echo "Removing existing stack: $STACK_NAME"
 if docker stack rm "$STACK_NAME"; then
