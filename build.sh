@@ -3,7 +3,7 @@ set -euo pipefail
 
 IMAGE_NAME="matheus/web:latest"
 DOCKERFILE=".ci/Dockerfile"
-COMPOSE_FILE=".ci/docker-compose.yml"
+COMPOSE_FILE=".ci/stack.yml"
 STACK_NAME="matheus"
 
 ENV_PATH="./.env"
