@@ -16,7 +16,7 @@ describe('Users', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('/users (GET)', () => {
     return request(app.getHttpServer()).get('/users').expect(200).expect([]);
   });
 });

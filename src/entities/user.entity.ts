@@ -7,8 +7,8 @@ export class User extends Model {
   fullName: string;
 
   @Column
-  email: string;
+  phoneNumber: string
 
   @Column
-  age: number;
+  email: string;
 }
