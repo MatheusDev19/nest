@@ -19,4 +19,14 @@ describe('Users', () => {
   it('/users (GET)', () => {
     return request(app.getHttpServer()).get('/users').expect(200).expect([]);
   });
+
+  it('/users (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/users')
+      .send({
+        name: 'Test User',
+        email: 'test@example.com'
+      })
+      .expect(201);
+  });
 });

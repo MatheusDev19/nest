@@ -1,19 +1,25 @@
-import { Body, Controller, Get } from '@nestjs/common';
-// import { CreateUserDto } from 'src/interface/create-user-dto';
+import { Body, Controller, Post, Get } from '@nestjs/common';
+import type { CreateUserDto } from '../interface/create-user-dto';
 import { User } from '../entities/user.entity';
-import { UserService } from '../services/user.service';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    @InjectModel(User)
+    private userModel: typeof User
+  ) {}
 
-  //   @Post()
-  //   create(@Body() createUserDto: CreateUserDto) {
-  //     return this.userService.create(createUserDto);
-  //   }
+  @Post()
+  async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+    return this.userModel.create({
+      ...createUserDto
+    });
+  }
+
 
   @Get()
   async findAll(): Promise<User[]> {
-    return this.userService.findAll();
+    return this.userModel.findAll();
   }
 }
