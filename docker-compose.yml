@@ -1,0 +1,8 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: "matheus-rodrigues"
+      POSTGRES_PASSWORD: "matheusolvr.dev"
+    ports: 
+     - "5434:5432"
